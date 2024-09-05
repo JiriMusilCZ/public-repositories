@@ -1,46 +1,75 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiri Musil - Public Repositories</title>
+    <title>Jiri Musil</title>
     <!-- Přidání odkazu na Bootstrap CSS pro tmavý motiv -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIqjyk2Ryt4jETcQ0DqaIkOY68rmuxflbY5ZYY6St8yT4UluKpD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
     <style>
-        body {
-            background-color: #343a40; /* Tmavší pozadí */
-            color: white; /* Bílý text */
-        }
-        .container {
-            margin-top: 30px;
-        }
         a {
-            color: #ffc107; /* Změna barvy odkazu na žlutou */
-        }
-        a:hover {
-            color: #ffdf7e; /* Barva odkazu při hoveru */
+            text-decoration: none;
         }
     </style>
+
 </head>
-<body>
-    <div class="container">
-        <h1 class="text-center">Jiri Musil - Public Repositories</h1>
-        <ul class="list-group mb-4">
-            <li class="list-group-item bg-dark"><a href="https://github.com/JiriMusilCZ/EvidencePojistenych.git">Evidence pojištěných</a> - jednoduchá aplikace na evidenci pojištěných osob vytvořená jako závěrečný projekt v prvním cyklu školení </li>
-            <li class="list-group-item bg-dark"><a href="https://github.com/JiriMusilCZ/invoice-client-starter.git">Databáze faktur - klient</a> - klientská aplikace vytvořená v React.js v rámci druhého cyklu školení </li>
-            <li class="list-group-item bg-dark"><a href="https://github.com/JiriMusilCZ/invoice-server-starter.git">Databáze faktur - server</a> - serverová část vytvořená v Java SpringBoot v rámci druhého cyklu školení</li>
-        </ul>
-        <!-- Kontaktní informace -->
-        <footer class="text-center mt-4">
-            <p>Kontakt: Jiri Musil</p>
-            <p>Mobil: <a href="tel:+420799505238" class="text-light">+42 799 505 238</a></p>
-            <p>Email: <a href="mailto:jiri.musil2012@gmail.com" class="text-light">jiri.musil2012@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/jirimusilcz2024" class="text-light">Jiri Musil</a></p>
-        </footer>
+
+<body class="bg-dark text-white">
+    <div class="container mt-4">
+        <div class="text-center my-4">
+            <h2>Jiří Musil</h2>
+            <h6>GitHub</h6>
+        </div>
+
+        <!-- Responzivní tabulka s veřejnými repozitáři -->
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th class="col-3">Odkaz</th>
+                        <th class="col-9">Popis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://github.com/JiriMusilCZ/EvidencePojistenych.git"
+                                class="text-warning">Evidence pojištěných</a></td>
+                        <td>Jednoduchá aplikace na evidenci pojištěných osob vytvořená jako závěrečný projekt v prvním
+                            cyklu školení</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/JiriMusilCZ/invoice-client-starter.git"
+                                class="text-warning">Databáze faktur - klient</a></td>
+                        <td>Klientská aplikace vytvořená v React.js v rámci druhého cyklu školení</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/JiriMusilCZ/invoice-server-starter.git"
+                                class="text-warning">Databáze faktur - server</a></td>
+                        <td>Serverová část vytvořená v Java SpringBoot v rámci druhého cyklu školení</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <!-- Přidání odkazu na Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPXcKYq6F+I06EGG2qP76Ft7bUmF7TbW9gWn9vVD6pZtQ5K0J" crossorigin="anonymous"></script>
+
 </body>
-</html>
+<!-- Kontaktní informace -->
+
+<footer class="text-center mt-5">
+    <p><a href="tel:+420799505238" class="text-light"><i class="bi bi-telephone"></i> +42 799 505 238</a></p>
+    <p><a href="mailto:jiri.musil2012@gmail.com" class="text-light"><i class="bi bi-envelope"></i> jiri.musil2012@gmail.com</a></p>
+    <p><a href="https://www.linkedin.com/in/jirimusilcz2024" class="text-light"><i class="bi bi-linkedin"></i> Jiří Musil</a></p>
+</footer>
+
+
+<!-- Přidání odkazu na Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
