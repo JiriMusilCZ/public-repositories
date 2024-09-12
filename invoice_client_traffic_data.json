@@ -1,6 +1,5 @@
 {
-    "count": 999,
-    "uniques": 999,
-    "download_count": 999
-  }
-  
+  "message": "Must have push access to repository",
+  "documentation_url": "https://docs.github.com/rest/metrics/traffic#get-page-views",
+  "status": "403"
+}
