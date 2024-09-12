@@ -1,12 +1,14 @@
-name: Update Traffic Data
+name: Fetch and Update Traffic Data
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Spustí se každou hodinu (přizpůsobit podle potřeby)
+    - cron: '0 * * * *'  # Spouští se každou hodinu
+  workflow_dispatch:  # Umožňuje spustit workflow manuálně
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -14,24 +16,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '18'  # Nastav verzi Node.js podle potřeby
 
       - name: Install dependencies
         run: npm install
 
-      - name: Fetch traffic data and save to JSON files
-        run: node fetch-traffic-data.js
-
-      - name: Configure Git
+      - name: Fetch and Update Traffic Data
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit and push changes
+          node .github/workflows/fetch-traffic-data.js
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
+
+      - name: Commit and push updated data
         run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add evidence_traffic_data.json invoice_client_traffic_data.json invoice_server_traffic_data.json
           git commit -m "Update traffic data"
           git push
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
 
