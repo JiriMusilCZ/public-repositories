@@ -40,6 +40,6 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git add evidence_traffic_data.json invoice_client_traffic_data.json invoice_server_traffic_data.json
           git commit -m "Update traffic data" || echo "No changes to commit"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/JiriMusilCZ/public-repositories.git
+          git pull --rebase origin main # Stáhne změny z remote repozitáře a integruje je do tvé větve
           git push
 
