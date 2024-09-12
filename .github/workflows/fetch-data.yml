@@ -15,28 +15,23 @@ jobs:
 
       - name: Fetch data using curl
         run: |
-          curl -H "Authorization: token ${{ secrets.GH_PAT }}" \
-               -H "Accept: application/vnd.github.v3+json" \
+          curl -H "Accept: application/vnd.github.v3+json" \
                -o evidence_traffic_data.json \
-               "https://api.github.com/repos/JiriMusilCZ/EvidencePojistenych/stats/traffic/views"
+               "https://api.github.com/repos/JiriMusilCZ/EvidencePojistenych/traffic/views"
 
-          curl -H "Authorization: token ${{ secrets.GH_PAT }}" \
-               -H "Accept: application/vnd.github.v3+json" \
+          curl -H "Accept: application/vnd.github.v3+json" \
                -o invoice_client_traffic_data.json \
-               "https://api.github.com/repos/JiriMusilCZ/invoice-client-starter/stats/traffic/views"
+               "https://api.github.com/repos/JiriMusilCZ/invoice-client-starter/traffic/views"
 
-          curl -H "Authorization: token ${{ secrets.GH_PAT }}" \
-               -H "Accept: application/vnd.github.v3+json" \
+          curl -H "Accept: application/vnd.github.v3+json" \
                -o invoice_server_traffic_data.json \
-               "https://api.github.com/repos/JiriMusilCZ/invoice-server-starter/stats/traffic/views"
+               "https://api.github.com/repos/JiriMusilCZ/invoice-server-starter/traffic/views"
 
       - name: Commit and push updated data
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git add evidence_traffic_data.json invoice_client_traffic_data.json invoice_server_traffic_data.json
-          git commit -m "Update traffic data"
+          git commit -m "Update traffic data" || echo "No changes to commit"
           git push
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
 
