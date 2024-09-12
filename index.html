@@ -47,12 +47,12 @@
             <table class="table table-dark table-hover align-middle">
                 <thead>
                     <tr>
-                        <th class="col-3">Odkaz</th>
-                        <th class="col-7">Popis</th>
+                        <th class="col-3 align-middle">Odkaz</th>
+                        <th class="col-7 align-middle">Popis</th>
                 
                         <th class="col-1 text-center align-middle">Zobrazení</th>
                         <th class="col-1 text-center align-middle">Unikátní návštěvníci</th>
-                        <th class="col-1 text-center align-middle">Stažení</th>
+             
                     </tr>
                 </thead>
                 <tbody>
@@ -61,21 +61,21 @@
                         <td>Jednoduchá aplikace na evidenci pojištěných osob vytvořená jako závěrečný projekt v prvním cyklu školení</td>
                         <td class="text-center align-middle" id="evidence_count"></td>
                         <td class="text-center align-middle" id="evidence_uniques"></td>
-                        <td class="text-center align-middle" id="evidence_download_count"></td>
+                
                     </tr>
                     <tr>
                         <td><a href="https://github.com/JiriMusilCZ/invoice-client-starter.git" class="text-warning">Databáze faktur - klient</a></td>
                         <td>Klientská aplikace vytvořená v React v rámci druhého cyklu školení</td>
                         <td class="text-center align-middle" id="invoice_client_count"></td>
                         <td class="text-center align-middle" id="invoice_client_uniques"></td>
-                        <td class="text-center align-middle" id="invoice_client_download_count"></td>
+         
                     </tr>
                     <tr>
                         <td><a href="https://github.com/JiriMusilCZ/invoice-server-starter.git" class="text-warning">Databáze faktur - server</a></td>
                         <td>Serverová část vytvořená v Java SpringBoot v rámci druhého cyklu školení</td>
                         <td class="text-center align-middle" id="invoice_server_count"></td>
                         <td class="text-center align-middle" id="invoice_server_uniques"></td>
-                        <td class="text-center align-middle" id="invoice_server_download_count"></td>
+        
                     </tr>
                 </tbody>
             </table>
@@ -84,7 +84,7 @@
 
     <!-- Kontaktní informace -->
     <footer class="footer text-center">
-        <p><a href="tel:+420799505238" class="text-light"><i class="bi bi-telephone"></i> +420 799 505 238</a></p>
+        <p><a href="tel:+420799505238" class="text-light"><i class="bi bi-telephone"></i> +42 799 505 238</a></p>
         <p><a href="mailto:jiri.musil2012@gmail.com" class="text-light"><i class="bi bi-envelope"></i> jiri.musil2012@gmail.com</a></p>
         <p><a href="https://www.linkedin.com/in/jirimusilcz2024" class="text-light"><i class="bi bi-linkedin"></i> Jiří Musil</a></p>
     </footer>
@@ -114,17 +114,17 @@
                 // Evidence pojištěných
                 document.getElementById('evidence_count').textContent = results[0].count;
                 document.getElementById('evidence_uniques').textContent = results[0].uniques;
-                document.getElementById('evidence_download_count').textContent = results[0].download_count;
+
 
                 // Databáze faktur - klient
                 document.getElementById('invoice_client_count').textContent = results[1].count;
                 document.getElementById('invoice_client_uniques').textContent = results[1].uniques;
-                document.getElementById('invoice_client_download_count').textContent = results[1].download_count;
+
 
                 // Databáze faktur - server
                 document.getElementById('invoice_server_count').textContent = results[2].count;
                 document.getElementById('invoice_server_uniques').textContent = results[2].uniques;
-                document.getElementById('invoice_server_download_count').textContent = results[2].download_count;
+  
             })
             .catch(error => {
                 console.error('Chyba při načítání dat:', error);
