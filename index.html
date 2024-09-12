@@ -49,38 +49,33 @@
                     <tr>
                         <th class="col-3">Odkaz</th>
                         <th class="col-9">Popis</th>
+                        <th class="col-1">Počet zobrazení Count</th>
+                        <th class="col-1">Počet unikátních návštěvníků Uniques</th>
+                        <th class="col-1">Počet stažení Download Count</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><a href="https://github.com/JiriMusilCZ/EvidencePojistenych.git" class="text-warning">Evidence pojištěných</a></td>
                         <td>Jednoduchá aplikace na evidenci pojištěných osob vytvořená jako závěrečný projekt v prvním cyklu školení</td>
+                        <td id="evidence_count"></td>
+                        <td id="evidence_uniques"></td>
+                        <td id="evidence_download_count"></td>
                     </tr>
                     <tr>
                         <td><a href="https://github.com/JiriMusilCZ/invoice-client-starter.git" class="text-warning">Databáze faktur - klient</a></td>
                         <td>Klientská aplikace vytvořená v React.js v rámci druhého cyklu školení</td>
+                        <td id="invoice_client_count"></td>
+                        <td id="invoice_client_uniques"></td>
+                        <td id="invoice_client_download_count"></td>
                     </tr>
                     <tr>
                         <td><a href="https://github.com/JiriMusilCZ/invoice-server-starter.git" class="text-warning">Databáze faktur - server</a></td>
                         <td>Serverová část vytvořená v Java SpringBoot v rámci druhého cyklu školení</td>
+                        <td id="invoice_server_count"></td>
+                        <td id="invoice_server_uniques"></td>
+                        <td id="invoice_server_download_count"></td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Tabulka pro zobrazení dat -->
-        <div class="table-responsive">
-            <table class="table table-dark table-hover data-table">
-                <thead>
-                    <tr>
-                        <th>Repozitář</th>
-                        <th>Počet zobrazení</th>
-                        <th>Počet unikátních návštěvníků</th>
-                        <th>Počet stažení</th>
-                    </tr>
-                </thead>
-                <tbody id="data-tbody">
-                    <!-- Data budou načtena sem pomocí JavaScriptu -->
                 </tbody>
             </table>
         </div>
@@ -102,35 +97,33 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Funkce pro načtení dat z JSON souborů
-            function fetchData(url, repoName) {
+            function fetchData(url) {
                 return fetch(url)
                     .then(response => response.json())
-                    .then(data => {
-                        return {
-                            repo: repoName,
-                            count: data.count,
-                            uniques: data.uniques,
-                            download_count: data.download_count
-                        };
-                    });
+                    .then(data => data);
             }
 
             // Načítání dat z jednotlivých souborů
             Promise.all([
-                fetchData('evidence_traffic_data.json', 'Evidence pojištěných'),
-                fetchData('invoice_client_traffic_data.json', 'Databáze faktur - klient'),
-                fetchData('invoice_server_traffic_data.json', 'Databáze faktur - server')
+                fetchData('evidence_traffic_data.json'),
+                fetchData('invoice_client_traffic_data.json'),
+                fetchData('invoice_server_traffic_data.json')
             ])
             .then(results => {
-                const tbody = document.getElementById('data-tbody');
-                tbody.innerHTML = results.map(data => `
-                    <tr>
-                        <td>${data.repo}</td>
-                        <td>${data.count}</td>
-                        <td>${data.uniques}</td>
-                        <td>${data.download_count}</td>
-                    </tr>
-                `).join('');
+                // Evidence pojištěných
+                document.getElementById('evidence_count').textContent = results[0].count;
+                document.getElementById('evidence_uniques').textContent = results[0].uniques;
+                document.getElementById('evidence_download_count').textContent = results[0].download_count;
+
+                // Databáze faktur - klient
+                document.getElementById('invoice_client_count').textContent = results[1].count;
+                document.getElementById('invoice_client_uniques').textContent = results[1].uniques;
+                document.getElementById('invoice_client_download_count').textContent = results[1].download_count;
+
+                // Databáze faktur - server
+                document.getElementById('invoice_server_count').textContent = results[2].count;
+                document.getElementById('invoice_server_uniques').textContent = results[2].uniques;
+                document.getElementById('invoice_server_download_count').textContent = results[2].download_count;
             })
             .catch(error => {
                 console.error('Chyba při načítání dat:', error);
