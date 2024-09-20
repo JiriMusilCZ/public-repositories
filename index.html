@@ -133,6 +133,9 @@
 
 <!-- JavaScript pro změnu jazyka -->
 <script>
+
+
+
     const content = {
         cs: {
             title: "Jiří Musil",
@@ -177,6 +180,9 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+
+        changeLanguage('cs');
+
         // Načítání dat z JSON souborů
         function fetchData(url) {
             return fetch(url)
