@@ -124,90 +124,89 @@
 
     <!-- Přidání odkazu na Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+      </script>
+
+      <script>
+            const content = {
+                cs: {
+                    title: "Jiří Musil",
+                    link: "Odkaz",
+                    descriptionHeader: "Popis",
+                    views: "Zobrazení",
+                    uniques: "Unikátní návštěvníci",
+                    evidenceLink: "Evidence pojištěných",
+                    evidenceDescription: "Jednoduchá aplikace na evidenci pojištěných osob vytvořená jako závěrečný projekt v prvním cyklu školení",
+                    invoiceClientLink: "Databáze faktur - klient",
+                    invoiceClientDescription: "Klientská aplikace vytvořená v React v rámci druhého cyklu školení",
+                    invoiceServerLink: "Databáze faktur - server",
+                    invoiceServerDescription: "Serverová část vytvořená v Java SpringBoot v rámci druhého cyklu školení",
+                },
+                en: {
+                    title: "Jiri Musil",
+                    link: "Link",
+                    descriptionHeader: "Description",
+                    views: "Views",
+                    uniques: "Unique visitors",
+                    evidenceLink: "Insurance Register",
+                    evidenceDescription: "A simple application for registering insured persons created as a final project in the first training cycle",
+                    invoiceClientLink: "Invoice Database - Client",
+                    invoiceClientDescription: "Client application created in React as part of the second modul of training",
+                    invoiceServerLink: "Invoice Database - Server",
+                    invoiceServerDescription: "Server part created in Java SpringBoot as part of the second modul of training",
+                }
+            };
+
+            function changeLanguage(lang) {
+                document.getElementById("page-title").textContent = content[lang].title;
+                document.getElementById("link").textContent = content[lang].link;
+                document.getElementById("views").textContent = content[lang].views;
+                document.getElementById("unique").textContent = content[lang].uniques;
+                document.getElementById("description-header").textContent = content[lang].descriptionHeader;
+                document.getElementById("evidence-link").textContent = content[lang].evidenceLink;
+                document.getElementById("evidence-description").textContent = content[lang].evidenceDescription;
+                document.getElementById("invoice-client-link").textContent = content[lang].invoiceClientLink;
+                document.getElementById("invoice-client-description").textContent = content[lang].invoiceClientDescription;
+                document.getElementById("invoice-server-link").textContent = content[lang].invoiceServerLink;
+                document.getElementById("invoice-server-description").textContent = content[lang].invoiceServerDescription;
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+
+                changeLanguage('cs'); 
+
+                // Načítání dat z JSON souborů
+                function fetchData(url) {
+                    return fetch(url)
+                        .then(response => response.json())
+                        .then(data => data);
+                }
+
+                // Načítání dat z jednotlivých souborů
+                Promise.all([
+                    fetchData('evidence_traffic_data.json'),
+                    fetchData('invoice_client_traffic_data.json'),
+                    fetchData('invoice_server_traffic_data.json')
+                ])
+                    .then(results => {
+                        document.getElementById('evidence_count').textContent = results[0].count;
+                        document.getElementById('evidence_uniques').textContent = results[0].uniques;
+                        document.getElementById('invoice_client_count').textContent = results[1].count;
+                        document.getElementById('invoice_client_uniques').textContent = results[1].uniques;
+                        document.getElementById('invoice_server_count').textContent = results[2].count;
+                        document.getElementById('invoice_server_uniques').textContent = results[2].uniques;
+                    })
+                    .catch(error => {
+                        console.error('Chyba při načítání dat:', error);
+                    });
+            });
+
+
+
+
+
+        </script>
 </body>
 
-
-
-
-<!-- JavaScript pro změnu jazyka -->
-<script>
-
-
-
-    const content = {
-        cs: {
-            title: "Jiří Musil",
-            link: "Odkaz",
-            descriptionHeader: "Popis",
-            views: "Zobrazení",
-            uniques: "Unikátní návštěvníci",
-            evidenceLink: "Evidence pojištěných",
-            evidenceDescription: "Jednoduchá aplikace na evidenci pojištěných osob vytvořená jako závěrečný projekt v prvním cyklu školení",
-            invoiceClientLink: "Databáze faktur - klient",
-            invoiceClientDescription: "Klientská aplikace vytvořená v React v rámci druhého cyklu školení",
-            invoiceServerLink: "Databáze faktur - server",
-            invoiceServerDescription: "Serverová část vytvořená v Java SpringBoot v rámci druhého cyklu školení",
-        },
-        en: {
-            title: "Jiri Musil",
-            link: "Link",
-            descriptionHeader: "Description",
-            views: "Views",
-            uniques: "Unique visitors",
-            evidenceLink: "Insurance Register",
-            evidenceDescription: "A simple application for registering insured persons created as a final project in the first training cycle",
-            invoiceClientLink: "Invoice Database - Client",
-            invoiceClientDescription: "Client application created in React as part of the second modul of training",
-            invoiceServerLink: "Invoice Database - Server",
-            invoiceServerDescription: "Server part created in Java SpringBoot as part of the second modul of training",
-        }
-    };
-
-    function changeLanguage(lang) {
-        document.getElementById("page-title").textContent = content[lang].title;
-        document.getElementById("link").textContent = content[lang].link;
-        document.getElementById("views").textContent = content[lang].views;
-        document.getElementById("unique").textContent = content[lang].uniques;
-        document.getElementById("description-header").textContent = content[lang].descriptionHeader;
-        document.getElementById("evidence-link").textContent = content[lang].evidenceLink;
-        document.getElementById("evidence-description").textContent = content[lang].evidenceDescription;
-        document.getElementById("invoice-client-link").textContent = content[lang].invoiceClientLink;
-        document.getElementById("invoice-client-description").textContent = content[lang].invoiceClientDescription;
-        document.getElementById("invoice-server-link").textContent = content[lang].invoiceServerLink;
-        document.getElementById("invoice-server-description").textContent = content[lang].invoiceServerDescription;
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-
-        changeLanguage('cs');
-
-        // Načítání dat z JSON souborů
-        function fetchData(url) {
-            return fetch(url)
-                .then(response => response.json())
-                .then(data => data);
-        }
-
-        // Načítání dat z jednotlivých souborů
-        Promise.all([
-            fetchData('evidence_traffic_data.json'),
-            fetchData('invoice_client_traffic_data.json'),
-            fetchData('invoice_server_traffic_data.json')
-        ])
-            .then(results => {
-                document.getElementById('evidence_count').textContent = results[0].count;
-                document.getElementById('evidence_uniques').textContent = results[0].uniques;
-                document.getElementById('invoice_client_count').textContent = results[1].count;
-                document.getElementById('invoice_client_uniques').textContent = results[1].uniques;
-                document.getElementById('invoice_server_count').textContent = results[2].count;
-                document.getElementById('invoice_server_uniques').textContent = results[2].uniques;
-            })
-            .catch(error => {
-                console.error('Chyba při načítání dat:', error);
-            });
-    });
-</script>
 
 </html>
