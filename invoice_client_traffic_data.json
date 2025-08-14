@@ -1,7 +1,5 @@
 {
-  "count": 0,
-  "uniques": 0,
-  "views": [
-
-  ]
+  "message": "The Traffic API is temporarily unavailable",
+  "documentation_url": "https://docs.github.com/rest/metrics/traffic#get-page-views",
+  "status": "503"
 }
